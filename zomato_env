@@ -1,0 +1,19 @@
+{
+	"id": "a831a48e-7f13-4d0e-ae2d-c0374ef189ec",
+	"name": "Zomato_env",
+	"values": [
+		{
+			"key": "base_url",
+			"value": "https://developers.zomato.com/api/v2.1",
+			"enabled": true
+		},
+		{
+			"key": "v1",
+			"value": "categories",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-11-28T13:36:54.675Z",
+	"_postman_exported_using": "Postman/7.36.0"
+}

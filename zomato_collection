@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "61e9d50a-2410-49c3-8fff-7adbca780ab5",
+		"name": "ZOMATO_API'S",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Zomato_GET_API's",
+			"item": [
+				{
+					"name": "GET_Categories_without_key",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_Resturant_details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d5a53f6-b99f-498e-92d5-05a6bcf8d29c",
+								"exec": [
+									"pm.test(\"Test-1_Verify_Resturant_name\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Otto Enoteca Pizzeria\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Test-2_Verify_City_name\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"New York\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user-key",
+								"value": "f9faac781e5484ad59d6e79b74a073e9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/restaurant?res_id={{v2resid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"restaurant"
+							],
+							"query": [
+								{
+									"key": "res_id",
+									"value": "{{v2resid}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_categories_with_key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "711b2cb8-5793-437e-89af-ce6cd0b88402",
+								"exec": [
+									"pm.test(\"TEST-1_Successfull-Request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 200]);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Dine-out\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user-key",
+								"value": "f9faac781e5484ad59d6e79b74a073e9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET_Cities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8e64f5bf-08fb-4d77-993b-9d1fc032aac1",
+								"exec": [
+									"pm.test(\"Response time is less than 400ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user-key",
+								"value": "f9faac781e5484ad59d6e79b74a073e9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://developers.zomato.com/api/v2.1/cities?q=3adba0d9353126e5781e8e49307ba0b1&lat=40.7128&lon=74.0060&city_ids=280&count=3",
+							"protocol": "https",
+							"host": [
+								"developers",
+								"zomato",
+								"com"
+							],
+							"path": [
+								"api",
+								"v2.1",
+								"cities"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "3adba0d9353126e5781e8e49307ba0b1"
+								},
+								{
+									"key": "lat",
+									"value": "40.7128"
+								},
+								{
+									"key": "lon",
+									"value": "74.0060"
+								},
+								{
+									"key": "city_ids",
+									"value": "280"
+								},
+								{
+									"key": "count",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6f48771c-582d-4f7f-bb8c-8cb738154579",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "009f077a-99a4-4e4b-b95e-5996a38cb977",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "7e7e55ef-2ede-4005-974a-1c00a7fff2ac",
+			"key": "v2resid",
+			"value": "16774318"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
